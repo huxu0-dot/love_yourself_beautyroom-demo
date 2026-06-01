@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Yourself Beauty Room | Award-Winning Salon Galway</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg:#0D0B09; --bg2:#120F0C; --bg3:#1A1510;
+            --gold:#C9A96E; --gold-light:#E2C89A; --gold-pale:#F5E9D0; --gold-dim:#8A6E42;
+            --cream:#F9F2E4; --text:#E8DCC8; --text-dim:#9A8870;
+            --border:rgba(201,169,110,0.18); --border-bright:rgba(201,169,110,0.4);
+            --glow:0 0 40px rgba(201,169,110,0.12); --glow-strong:0 0 80px rgba(201,169,110,0.2);
+            --shadow:0 20px 60px rgba(0,0,0,0.5); --r:16px; --r-lg:28px;
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+        h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:500;}
+        ::selection{background:rgba(201,169,110,0.25);color:#fff;}
+        ::-webkit-scrollbar{width:6px;} ::-webkit-scrollbar-track{background:var(--bg);} ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:10px;}
+
+        @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+        @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+        @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,169,110,0.35);}50%{box-shadow:0 0 0 20px rgba(201,169,110,0);}}
+        @keyframes scaleIn{from{opacity:0;transform:scale(0.92);}to{opacity:1;transform:scale(1);}}
+        @keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:0.5;}30%{transform:translateY(-6px);opacity:1;}}
+        @keyframes gradientShift{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+
+        .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.25,.46,.45,.94),transform .9s cubic-bezier(.25,.46,.45,.94);}
+        .reveal.visible{opacity:1;transform:translateY(0);}
+        .reveal-d1{transition-delay:.1s;} .reveal-d2{transition-delay:.2s;} .reveal-d3{transition-delay:.3s;}
+
+        .container{max-width:1280px;margin:0 auto;padding:0 48px;}
+        .container-sm{max-width:960px;margin:0 auto;padding:0 48px;}
+        .container-lg{max-width:1440px;margin:0 auto;padding:0 48px;}
+
+        .gold-line{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto;}
+
+        /* HEADER */
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;background:rgba(13,11,9,0.6);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid transparent;transition:all .4s ease;}
+        .header.scrolled{padding:12px 0;background:rgba(13,11,9,0.94);border-bottom:var(--border);}
+        .header-inner{display:flex;align-items:center;justify-content:space-between;}
+        .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;color:var(--cream);text-decoration:none;display:flex;align-items:center;gap:10px;}
+        .logo-icon{color:var(--gold);font-size:1rem;}
+        .logo em{color:var(--gold);font-style:italic;}
+        .logo-sub{display:block;font-family:'Jost',sans-serif;font-size:0.52rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-dim);font-weight:400;margin-top:2px;}
+        .nav-list{display:flex;align-items:center;gap:26px;list-style:none;}
+        .nav-list a{text-decoration:none;color:var(--text-dim);font-size:0.72rem;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;transition:color .3s;position:relative;padding:4px 0;}
+        .nav-list a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width .35s ease;}
+        .nav-list a:hover{color:var(--gold-light);}
+        .nav-list a:hover::after{width:100%;}
+        .nav-cta{padding:10px 22px!important;background:linear-gradient(135deg,var(--gold),var(--gold-dim))!important;color:#0D0B09!important;border-radius:50px;font-weight:600!important;transition:transform .3s,box-shadow .3s!important;}
+        .nav-cta::after{display:none!important;}
+        .nav-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 24px rgba(201,169,110,0.35)!important;}
+        .mobile-toggle{display:none;background:none;border:none;color:var(--cream);font-size:1.4rem;cursor:pointer;}
+
+        /* BTN */
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 36px;border-radius:50px;font-family:'Jost',sans-serif;font-weight:500;font-size:0.78rem;letter-spacing:1.8px;text-transform:uppercase;cursor:pointer;transition:all .4s ease;text-decoration:none;border:none;white-space:nowrap;}
+        .btn-gold{background:linear-gradient(135deg,var(--gold-light) 0%,var(--gold) 50%,var(--gold-dim) 100%);background-size:200% 200%;color:#0D0B09;box-shadow:0 6px 28px rgba(201,169,110,0.28);animation:gradientShift 4s ease infinite;}
+        .btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(201,169,110,0.45);}
+        .btn-outline{background:transparent;border:1px solid var(--border-bright);color:var(--gold-light);}
+        .btn-outline:hover{background:rgba(201,169,110,0.08);border-color:var(--gold);transform:translateY(-2px);}
+
+        /* HERO */
+        .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 70% 50%,rgba(201,169,110,0.06) 0%,transparent 60%),var(--bg);padding-top:100px;}
+        .hero-particles{position:absolute;inset:0;pointer-events:none;background:radial-gradient(1px 1px at 20% 30%,rgba(201,169,110,0.5) 0%,transparent 100%),radial-gradient(1px 1px at 80% 20%,rgba(201,169,110,0.35) 0%,transparent 100%),radial-gradient(1px 1px at 60% 70%,rgba(201,169,110,0.3) 0%,transparent 100%),radial-gradient(2px 2px at 90% 60%,rgba(201,169,110,0.2) 0%,transparent 100%);}
+        .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative;z-index:2;width:100%;}
+        .hero-content{animation:fadeUp 1.2s ease forwards;}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.25);color:var(--gold-light);padding:8px 20px;border-radius:50px;font-size:0.68rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-bottom:24px;}
+        .hero-badge i{color:var(--gold);}
+        .hero h1{font-size:4rem;line-height:1.08;color:var(--cream);margin-bottom:20px;font-weight:600;}
+        .hero h1 em{color:var(--gold);font-style:italic;font-weight:400;}
+        .hero-subtitle{font-size:0.98rem;color:var(--text-dim);margin-bottom:14px;max-width:460px;line-height:1.85;font-weight:300;}
+        .hero-socials{display:inline-flex;align-items:center;gap:8px;background:rgba(225,48,108,0.08);border:1px solid rgba(225,48,108,0.2);padding:7px 18px;border-radius:50px;font-size:0.75rem;color:var(--text);margin-bottom:12px;font-weight:400;}
+        .hero-socials i{color:#E1306C;}
+        .hero-address{display:inline-flex;align-items:center;gap:8px;background:rgba(201,169,110,0.05);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.75rem;color:var(--text-dim);margin-bottom:30px;}
+        .hero-address i{color:var(--gold);}
+        .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;}
+        .hero-trust{display:flex;gap:18px;flex-wrap:wrap;align-items:center;}
+        .trust-item{display:flex;align-items:center;gap:6px;font-size:0.72rem;color:var(--text-dim);font-weight:400;}
+        .trust-item i{color:var(--gold);font-size:0.8rem;}
+        .trust-div{width:1px;height:16px;background:var(--border);}
+        .hero-visual{position:relative;animation:float 7s ease-in-out infinite;}
+        .hero-img{width:100%;height:570px;object-fit:cover;border-radius:40% 60% 55% 45% / 50% 45% 55% 50%;border:1px solid rgba(201,169,110,0.3);box-shadow:0 30px 80px rgba(0,0,0,0.6),0 0 60px rgba(201,169,110,0.08);}
+        .hero-frame{position:absolute;top:28px;left:-28px;width:100%;height:100%;border:1px solid rgba(201,169,110,0.18);border-radius:40% 60% 55% 45% / 50% 45% 55% 50%;z-index:-1;pointer-events:none;}
+        .hero-award{position:absolute;bottom:30px;right:-16px;width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold));display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(201,169,110,0.45);animation:pulse 3s infinite;text-align:center;padding:8px;}
+        .hero-award i{color:#0D0B09;font-size:1.2rem;margin-bottom:3px;}
+        .hero-award span{font-size:0.46rem;font-weight:700;color:#0D0B09;letter-spacing:0.5px;text-transform:uppercase;line-height:1.3;}
+
+        /* SECTION */
+        section{padding:110px 0;position:relative;z-index:1;}
+        .section-header{text-align:center;margin-bottom:72px;}
+        .section-tag{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:4px;font-size:0.63rem;color:var(--gold);margin-bottom:10px;font-weight:600;}
+        .section-title{font-size:2.9rem;color:var(--cream);margin-bottom:14px;font-weight:600;}
+        .section-title em{color:var(--gold);font-style:italic;font-weight:400;}
+        .section-desc{color:var(--text-dim);max-width:500px;margin:14px auto 0;font-size:0.88rem;line-height:1.8;font-weight:300;}
+
+        /* SERVICES */
+        .services{background:var(--bg2);}
+        .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;}
+        .service-card{background:var(--bg2);padding:34px 26px 30px;text-align:center;position:relative;overflow:hidden;transition:all .45s cubic-bezier(.25,.46,.45,.94);}
+        .service-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,169,110,0.06) 0%,transparent 70%);opacity:0;transition:opacity .5s;}
+        .service-card:hover::before{opacity:1;}
+        .service-card:hover{background:var(--bg3);transform:translateY(-4px);z-index:2;box-shadow:var(--shadow);}
+        .service-icon{width:60px;height:60px;margin:0 auto 18px;background:rgba(201,169,110,0.08);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:var(--gold);transition:all .45s;}
+        .service-card:hover .service-icon{background:var(--gold);color:#0D0B09;border-color:var(--gold);transform:scale(1.1);}
+        .service-card h3{font-size:1.15rem;color:var(--cream);margin-bottom:5px;font-weight:600;}
+        .service-duration{font-size:0.68rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;}
+        .service-desc{font-size:0.8rem;color:var(--text-dim);margin-bottom:12px;line-height:1.7;font-weight:300;}
+        .service-price{font-family:'Playfair Display',serif;font-size:1.75rem;color:var(--gold);margin-bottom:4px;}
+        .service-price-note{font-size:0.68rem;color:var(--text-dim);margin-bottom:16px;letter-spacing:0.5px;}
+        .btn-service{padding:9px 22px;font-size:0.7rem;border-radius:50px;background:transparent;border:1px solid var(--border-bright);color:var(--gold-light);cursor:pointer;transition:all .3s;text-transform:uppercase;letter-spacing:1.5px;font-weight:500;font-family:'Jost',sans-serif;}
+        .btn-service:hover{background:var(--gold);color:#0D0B09;border-color:var(--gold);}
+
+        /* PRICE LIST */
+        .price-list-section{background:var(--bg);}
+        .price-images-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+        .price-image-card{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);transition:all .5s cubic-bezier(.25,.46,.45,.94);cursor:pointer;}
+        .price-image-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,11,9,0.65) 0%,transparent 50%);transition:opacity .4s;pointer-events:none;}
+        .price-image-card:hover{transform:scale(1.02);box-shadow:0 40px 80px rgba(0,0,0,0.7),var(--glow-strong);border-color:var(--gold-dim);}
+        .price-image-card img{width:100%;height:100%;object-fit:cover;min-height:340px;display:block;transition:transform .6s ease;}
+        .price-image-card:hover img{transform:scale(1.04);}
+        .price-image-label{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:22px 26px;background:linear-gradient(to top,rgba(13,11,9,0.95) 0%,rgba(13,11,9,0.3) 60%,transparent 100%);}
+        .price-image-label h4{font-family:'Playfair Display',serif;color:var(--gold-light);font-size:1.1rem;margin-bottom:5px;}
+        .price-image-label p{font-size:0.73rem;color:var(--text-dim);letter-spacing:0.3px;font-weight:300;}
+        .hover-cta{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8);z-index:3;opacity:0;transition:all .4s;background:var(--gold);color:#0D0B09;padding:11px 26px;border-radius:50px;font-size:0.73rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+        .price-image-card:hover .hover-cta{opacity:1;transform:translate(-50%,-50%) scale(1);}
+
+        /* LIGHTBOX */
+        .lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);display:none;align-items:center;justify-content:center;backdrop-filter:blur(10px);}
+        .lightbox.open{display:flex;animation:scaleIn .3s ease;}
+        .lightbox img{max-width:88vw;max-height:88vh;object-fit:contain;border-radius:var(--r);border:1px solid var(--border);}
+        .lb-close{position:absolute;top:22px;right:26px;background:none;border:none;color:var(--gold-light);font-size:2rem;cursor:pointer;transition:transform .3s;}
+        .lb-close:hover{transform:rotate(90deg);}
+        .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(201,169,110,0.15);border:1px solid var(--border-bright);color:var(--gold-light);font-size:1.4rem;width:50px;height:50px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;}
+        .lb-nav:hover{background:var(--gold);color:#0D0B09;}
+        .lb-prev{left:20px;} .lb-next{right:20px;}
+
+        /* ABOUT */
+        .about{background:var(--bg2);}
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+        .about-img-wrap{position:relative;}
+        .about-img{width:100%;border-radius:var(--r-lg);box-shadow:var(--shadow);border:1px solid var(--border);display:block;}
+        .about-badge{position:absolute;bottom:-20px;right:-18px;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#0D0B09;padding:16px 20px;border-radius:var(--r);box-shadow:0 12px 32px rgba(201,169,110,0.4);text-align:center;}
+        .about-badge strong{display:block;font-family:'Playfair Display',serif;font-size:1.4rem;}
+        .about-badge span{font-size:0.62rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;}
+        .about-content h2{font-size:2.4rem;color:var(--cream);margin-bottom:20px;line-height:1.2;}
+        .about-content h2 em{color:var(--gold);font-style:italic;}
+        .about-content p{color:var(--text-dim);line-height:1.85;margin-bottom:15px;font-size:0.9rem;font-weight:300;}
+        .about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px;}
+        .stat-item{text-align:center;padding:18px 10px;border:1px solid var(--border);border-radius:var(--r);background:rgba(201,169,110,0.04);}
+        .stat-num{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--gold);display:block;}
+        .stat-label{font-size:0.67rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px;display:block;font-weight:500;}
+
+        /* TESTIMONIALS */
+        .testimonials{background:var(--bg);}
+        .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:20px;}
+        .tcard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-lg);padding:34px 28px;transition:all .4s;position:relative;overflow:hidden;}
+        .tcard::before{content:'\201C';position:absolute;top:-10px;right:18px;font-family:'Playfair Display',serif;font-size:8rem;color:rgba(201,169,110,0.06);line-height:1;pointer-events:none;}
+        .tcard:hover{border-color:var(--gold-dim);box-shadow:var(--glow);transform:translateY(-4px);}
+        .stars{color:var(--gold);font-size:0.78rem;letter-spacing:3px;margin-bottom:14px;}
+        .t-text{color:var(--text-dim);line-height:1.8;margin-bottom:20px;font-size:0.87rem;font-style:italic;font-weight:300;}
+        .t-author{display:flex;align-items:center;gap:12px;}
+        .t-author-img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold-dim);}
+        .t-author-name{font-weight:600;color:var(--cream);font-size:0.86rem;}
+        .t-author-detail{font-size:0.7rem;color:var(--text-dim);}
+
+        /* GALLERY */
+        .gallery-section{background:var(--bg2);}
+        .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:260px;gap:12px;}
+        .gallery-grid img{width:100%;height:100%;object-fit:cover;border-radius:var(--r);border:1px solid var(--border);transition:all .5s;cursor:pointer;}
+        .gallery-grid img:hover{transform:scale(1.04);box-shadow:var(--shadow),var(--glow);z-index:2;border-color:var(--gold-dim);}
+        .g-tall{grid-row:span 2;} .g-wide{grid-column:span 2;}
+
+        /* BOOKING */
+        .booking-section{background:var(--bg);}
+        .booking-wrapper{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-lg);padding:50px 46px;box-shadow:var(--shadow);max-width:780px;margin:0 auto;position:relative;overflow:hidden;}
+        .booking-wrapper::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.05) 0%,transparent 70%);pointer-events:none;}
+        .booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+        .booking-grid select,.booking-grid input{padding:14px 20px;border-radius:50px;border:1px solid var(--border);background:var(--bg3);font-family:'Jost',sans-serif;font-size:0.83rem;color:var(--text);transition:all .3s;width:100%;appearance:none;-webkit-appearance:none;cursor:pointer;}
+        .booking-grid select:focus,.booking-grid input:focus{outline:none;border-color:var(--gold-dim);box-shadow:0 0 0 4px rgba(201,169,110,0.06);}
+        .booking-grid select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23C9A96E' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;padding-right:40px;}
+        .booking-grid select option{background:var(--bg3);}
+
+        /* CONTACT */
+        .contact-section{background:var(--bg2);}
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;}
+        .contact-item{margin-bottom:26px;}
+        .contact-item-label{font-weight:600;color:var(--cream);margin-bottom:5px;display:flex;align-items:center;gap:8px;font-size:0.88rem;}
+        .contact-item-label i{color:var(--gold);}
+        .contact-item p{color:var(--text-dim);font-size:0.86rem;font-weight:300;}
+        .contact-form input,.contact-form textarea{width:100%;padding:14px 20px;border-radius:50px;border:1px solid var(--border);background:var(--bg3);font-family:'Jost',sans-serif;font-size:0.84rem;color:var(--text);margin-bottom:12px;transition:all .3s;}
+        .contact-form textarea{border-radius:var(--r);resize:vertical;}
+        .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--gold-dim);}
+        .social-handle{display:inline-flex;align-items:center;gap:6px;background:rgba(225,48,108,0.08);border:1px solid rgba(225,48,108,0.2);padding:7px 16px;border-radius:50px;font-size:0.73rem;color:var(--text);text-decoration:none;transition:all .3s;margin-right:8px;}
+        .social-handle:hover{background:rgba(225,48,108,0.15);border-color:rgba(225,48,108,0.4);}
+        .social-handle i{color:#E1306C;}
+
+        /* FOOTER */
+        .footer{background:var(--bg);border-top:1px solid var(--border);padding:72px 0 28px;}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;margin-bottom:48px;}
+        .footer-brand{font-family:'Playfair Display',serif;font-size:1.85rem;color:var(--cream);margin-bottom:14px;}
+        .footer-brand em{color:var(--gold);font-style:italic;}
+        .footer-links h4{color:var(--cream);margin-bottom:16px;font-size:0.72rem;letter-spacing:2.5px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:600;}
+        .footer-links a{display:block;color:var(--text-dim);text-decoration:none;margin-bottom:10px;font-size:0.82rem;transition:color .3s;font-weight:300;}
+        .footer-links a:hover{color:var(--gold-light);}
+        .footer-newsletter input{width:100%;padding:12px 18px;border-radius:50px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:var(--text);font-family:'Jost',sans-serif;margin-bottom:10px;font-size:0.82rem;}
+        .footer-newsletter input::placeholder{color:var(--text-dim);}
+        .footer-newsletter h4{color:var(--cream);margin-bottom:10px;font-size:0.72rem;letter-spacing:2.5px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:600;}
+        .footer-bottom{border-top:1px solid var(--border);padding-top:24px;text-align:center;font-size:0.73rem;color:var(--text-dim);font-weight:300;}
+
+        /* CHATBOT */
+        .chatbot-wrapper{position:fixed;bottom:28px;right:28px;z-index:2000;display:flex;flex-direction:column;align-items:flex-end;}
+        .chatbot-popup{width:380px;max-height:520px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:0 32px 80px rgba(0,0,0,0.6);overflow:hidden;display:none;flex-direction:column;margin-bottom:14px;animation:scaleIn .35s ease;}
+        .chatbot-popup.open{display:flex;}
+        .chatbot-header{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#0D0B09;padding:16px 18px;font-weight:600;font-size:0.87rem;display:flex;align-items:center;gap:10px;}
+        .chatbot-body{height:300px;overflow-y:auto;padding:16px;background:var(--bg3);display:flex;flex-direction:column;gap:10px;}
+        .chat-message{max-width:85%;padding:10px 14px;border-radius:18px;font-size:0.83rem;line-height:1.5;animation:fadeUp .3s ease;}
+        .chat-message.bot{background:rgba(201,169,110,0.1);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px;color:var(--text);}
+        .chat-message.user{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#0D0B09;align-self:flex-end;border-bottom-right-radius:4px;font-weight:500;}
+        .typing-indicator{display:flex;gap:5px;padding:10px 14px;background:rgba(201,169,110,0.1);border:1px solid var(--border);border-radius:18px;align-self:flex-start;border-bottom-left-radius:4px;width:fit-content;}
+        .typing-indicator span{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:typingBounce 1.2s infinite;}
+        .typing-indicator span:nth-child(2){animation-delay:.2s;} .typing-indicator span:nth-child(3){animation-delay:.4s;}
+        .chatbot-quick{display:flex;flex-wrap:wrap;gap:7px;padding:12px 14px;background:var(--bg2);border-top:1px solid var(--border);}
+        .quick-chip{background:rgba(201,169,110,0.07);border:1px solid var(--border);padding:7px 14px;border-radius:50px;font-size:0.72rem;cursor:pointer;transition:all .3s;color:var(--text-dim);font-weight:500;}
+        .quick-chip:hover{background:var(--gold);color:#0D0B09;border-color:var(--gold);}
+        .chatbot-input-row{display:flex;padding:10px 14px;background:var(--bg2);border-top:1px solid var(--border);gap:8px;}
+        .chatbot-input-row input{flex:1;padding:10px 16px;border-radius:50px;border:1px solid var(--border);background:var(--bg3);color:var(--text);font-family:'Jost',sans-serif;font-size:0.79rem;transition:all .3s;}
+        .chatbot-input-row input:focus{outline:none;border-color:var(--gold-dim);}
+        .chatbot-input-row button{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#0D0B09;border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;transition:all .3s;font-size:0.9rem;}
+        .chatbot-input-row button:hover{transform:scale(1.08);}
+        .chatbot-toggle-btn{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#0D0B09;border:none;cursor:pointer;font-size:1.4rem;box-shadow:0 8px 32px rgba(201,169,110,0.4);transition:all .4s;animation:pulse 3.5s infinite;display:flex;align-items:center;justify-content:center;}
+        .chatbot-toggle-btn:hover{transform:scale(1.1);}
+
+        @media(max-width:1024px){.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}.hero-content{text-align:center;}.hero-subtitle,.hero-socials,.hero-address{margin-left:auto;margin-right:auto;}.hero-cta,.hero-trust{justify-content:center;}.hero-img{height:420px;}.gallery-grid{grid-template-columns:1fr 1fr;}.footer-grid{grid-template-columns:1fr 1fr;}.price-images-grid{grid-template-columns:1fr;}}
+        @media(max-width:768px){.container,.container-sm,.container-lg{padding:0 22px;}.nav-list{display:none;}.mobile-toggle{display:block;}.hero h1{font-size:2.7rem;}.section-title{font-size:2rem;}.gallery-grid{grid-template-columns:1fr;}.booking-grid{grid-template-columns:1fr;}.chatbot-popup{width:316px;}.footer-grid{grid-template-columns:1fr;}.trust-div{display:none;}.booking-wrapper{padding:30px 22px;}.about-stats{grid-template-columns:1fr 1fr;}}
+    </style>
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="container header-inner">
+        <a href="#" class="logo">
+            <i class="fas fa-heart logo-icon"></i>
+            Love Yourself <em>Beauty Room</em>
+            <span class="logo-sub">Professional Beautician & Spa Therapist · Galway</span>
+        </a>
+        <ul class="nav-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#price-list">Prices</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#booking" class="nav-cta">Book Now</a></li>
+        </ul>
+        <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+    </div>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-particles"></div>
+    <div class="container-lg hero-grid">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-trophy"></i> Irish Beauty Award Winner 2025</div>
+            <h1>Where <em>Self-Love</em><br>Becomes<br><em>Radiant Beauty</em></h1>
+            <p class="hero-subtitle">Award-winning professional beautician & spa therapist with 10 years of international experience. Bespoke treatments in a serene Galway sanctuary.</p>
+            <div class="hero-socials"><i class="fab fa-instagram"></i> @pro.ya.na &nbsp;·&nbsp; <i class="fab fa-instagram"></i> @headspa_ireland</div><br>
+            <div class="hero-address"><i class="fas fa-map-marker-alt"></i> Doughishka Road, Galway, Ireland H91VK66</div>
+            <div class="hero-cta">
+                <a href="#booking" class="btn btn-gold">Reserve Your Visit <i class="fas fa-arrow-right"></i></a>
+                <a href="#services" class="btn btn-outline">Browse Treatments</a>
+            </div>
+            <div class="hero-trust">
+                <div class="trust-item"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 5.0 Rating</div>
+                <span class="trust-div"></span>
+                <div class="trust-item"><i class="fas fa-award"></i> Award Winner 2025</div>
+                <span class="trust-div"></span>
+                <div class="trust-item"><i class="fas fa-certificate"></i> 10+ Years Exp.</div>
+                <span class="trust-div"></span>
+                <div class="trust-item"><i class="fas fa-heart"></i> 15,000+ Clients</div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-frame"></div>
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80" alt="Love Yourself Beauty Room Galway" class="hero-img">
+            <div class="hero-award"><i class="fas fa-trophy"></i><span>Irish Beauty Award 2025</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-tag">Our Expertise</div>
+            <h2 class="section-title">Curated <em>Beauty Experiences</em></h2>
+            <div class="gold-line" style="margin-top:16px;margin-bottom:16px;"></div>
+            <p class="section-desc">Every treatment is a ritual of self-love, delivered by an award-winning professional using world-leading products and techniques.</p>
+        </div>
+        <div class="services-grid reveal">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-spa"></i></div>
+                <h3>Signature Facials</h3>
+                <p class="service-duration">80 min</p>
+                <p class="service-desc">Deep Cleanse, Hydro Boost, Anti-Aging, BioRepeel, Gentleman's Facial & more</p>
+                <p class="service-price">from €80</p>
+                <button class="btn-service">Book Now</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-feather"></i></div>
+                <h3>Dermaplaning</h3>
+                <p class="service-duration">50–70 min</p>
+                <p class="service-desc">Single session (€75) or Super Glow with PDRN mask & LED therapy (€90)</p>
+                <p class="service-price">€75 – €90</p>
+                <button class="btn-service">Book Now</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-crown"></i></div>
+                <h3>Luxury Facials</h3>
+                <p class="service-duration">80–90 min</p>
+                <p class="service-desc">Circadia Luxury Customized, Botox Effect & Casmara Customized Facial</p>
+                <p class="service-price">€80 – €100</p>
+                <button class="btn-service">Book Now</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-microscope"></i></div>
+                <h3>Microneedling + Exosomes</h3>
+                <p class="service-duration">70–120 min</p>
+                <p class="service-desc">Premium Exosomes with Dermalux LED — full face or face, neck & décolleté</p>
+                <p class="service-price">€175 – €220</p>
+                <button class="btn-service">Book Now</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-tint"></i></div>
+                <h3>Skin Booster PDRN</h3>
+                <p class="service-duration">Course of 4 sessions</p>
+                <p class="service-desc">Targeted PDRN for face, neck or eyes zone — deeply hydrating & rejuvenating</p>
+                <p class="service-price">€150 per area</p>
+                <p class="service-price-note">Repeat once a month</p>
+                <button class="btn-service">Book Now</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-magic"></i></div>
+                <h3>Hair Filler / Scalp Microneedling</h3>
+                <p class="service-duration">Course of 4 sessions</p>
+                <p class="service-desc">Advanced scalp treatment for hair density and rejuvenation</p>
+                <p class="service-price">€150 / session</p>
+                <p class="service-price-note">Repeat once a month</p>
+                <button class="btn-service">Book Now</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-water"></i></div>
+                <h3>Head Spa Therapy</h3>
+                <p class="service-duration">60 min</p>
+                <p class="service-desc">Japanese-inspired scalp treatment & deep relaxation — our most-loved service</p>
+                <p class="service-price">€95</p>
+                <button class="btn-service">Book Now</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-eye"></i></div>
+                <h3>Brow Services</h3>
+                <p class="service-duration">30–50 min</p>
+                <p class="service-desc">Brows Lamination (€50) · Brows Tinting + Shaping (€25) — precision sculpting</p>
+                <p class="service-price">€25 – €50</p>
+                <button class="btn-service">Book Now</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-hands"></i></div>
+                <h3>Massages & Body</h3>
+                <p class="service-duration">30–90 min</p>
+                <p class="service-desc">Full Body, Deep Tissue, Anticellulite, Lymphatic, Vacuum Vibro & Bandage Wrapping</p>
+                <p class="service-price">from €50</p>
+                <button class="btn-service">Book Now</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-sun"></i></div>
+                <h3>Dermalux LED + PDRN</h3>
+                <p class="service-duration">Add-on or standalone</p>
+                <p class="service-desc">Targeted LED light therapy with PDRN mask for accelerated healing & glow</p>
+                <p class="service-price">€50</p>
+                <button class="btn-service">Book Now</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-star"></i></div>
+                <h3>Teenager Facial</h3>
+                <p class="service-duration">60 min · till 16 y/o</p>
+                <p class="service-desc">Gentle, age-appropriate deep cleansing facial for young, radiant skin</p>
+                <p class="service-price">€60</p>
+                <button class="btn-service">Book Now</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-gem"></i></div>
+                <h3>Bridal Concierge</h3>
+                <p class="service-duration">Custom Package</p>
+                <p class="service-desc">Full wedding beauty curation with trials, day-of glam & pre-bridal skin programme</p>
+                <p class="service-price">from €420</p>
+                <button class="btn-service">Book Now</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="price-list-section" id="price-list">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-tag">Full Treatment Menus</div>
+            <h2 class="section-title">Our <em>Price Lists</em></h2>
+            <div class="gold-line" style="margin-top:16px;margin-bottom:16px;"></div>
+            <p class="section-desc">Browse our complete treatment menus. Click any card to view in full detail.</p>
+        </div>
+        <div class="price-images-grid reveal">
+            <div class="price-image-card" onclick="openLightbox(0)">
+                <img src="656160943_17997855629866360_4613145091297097122_n.jpg" alt="Facials Price List">
+                <div class="price-image-label">
+                    <h4>✦ Facials Menu</h4>
+                    <p>Deep Cleanse · Hydro Boost · Anti-Aging · Dermaplaning · Botox Effect & more — from €50</p>
+                </div>
+                <div class="hover-cta"><i class="fas fa-expand"></i>&nbsp; View Full Menu</div>
+            </div>
+            <div class="price-image-card" onclick="openLightbox(1)">
+                <img src="658054231_17997855620866360_5766234982690974536_n.jpg" alt="Massages & Body Treatments Price List">
+                <div class="price-image-label">
+                    <h4>✦ Massages & Body Treatments</h4>
+                    <p>Full Body · Deep Tissue · Lymphatic · Bandage Wrapping — from €50</p>
+                </div>
+                <div class="hover-cta"><i class="fas fa-expand"></i>&nbsp; View Full Menu</div>
+            </div>
+            <div class="price-image-card" onclick="openLightbox(2)">
+                <img src="656582610_17997855638866360_6059046420955525881_n.jpg" alt="Advanced Skin Treatments Price List">
+                <div class="price-image-label">
+                    <h4>✦ Advanced Skin Treatments</h4>
+                    <p>Microneedling + Exosomes · Skin Booster PDRN · Hair Filler — from €150</p>
+                </div>
+                <div class="hover-cta"><i class="fas fa-expand"></i>&nbsp; View Full Menu</div>
+            </div>
+            <div class="price-image-card" onclick="openLightbox(3)">
+                <img src="659057609_17997855617866360_5759736181100285731_n.jpg" alt="Brow Services Price List">
+                <div class="price-image-label">
+                    <h4>✦ Brow Services</h4>
+                    <p>Brows Lamination · Tinting & Shaping — from €25</p>
+                </div>
+                <div class="hover-cta"><i class="fas fa-expand"></i>&nbsp; View Full Menu</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+    <button class="lb-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    <button class="lb-nav lb-prev" onclick="changeImage(-1)"><i class="fas fa-chevron-left"></i></button>
+    <img id="lightbox-img" src="" alt="Price List">
+    <button class="lb-nav lb-next" onclick="changeImage(1)"><i class="fas fa-chevron-right"></i></button>
+</div>
+
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="reveal about-img-wrap">
+                <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=700&q=80" alt="Yana - Love Yourself Beauty Room" class="about-img">
+                <div class="about-badge"><strong>2025</strong><span>Award Winner</span></div>
+            </div>
+            <div class="reveal about-content">
+                <div class="section-tag" style="text-align:left;">Our Story</div>
+                <h2>Rooted in <em>Passion</em> & Excellence</h2>
+                <div class="gold-line" style="margin:18px 0 22px; margin-left:0; width:60px; background:linear-gradient(90deg,var(--gold),transparent);"></div>
+                <p>Founded by <strong style="color:var(--cream);">Yana</strong>, an award-winning professional beautician and spa therapist with over 10 years of international experience. Love Yourself Beauty Room was born from a simple belief: that every person deserves to feel beautiful, confident, and deeply cared for.</p>
+                <p>🏆 <strong style="color:var(--gold-light);">Irish Beauty Award Winner 2025</strong> — recognised for excellence in advanced skincare and client experience.</p>
+                <p>As a trusted influencer in the Irish beauty community (<strong style="color:var(--cream);">@pro.ya.na</strong> & <strong style="color:var(--cream);">@headspa_ireland</strong>), Yana brings the latest techniques and trends directly to her clients on Doughishka Road, Galway.</p>
+                <div class="about-stats">
+                    <div class="stat-item"><span class="stat-num">10+</span><span class="stat-label">Years Exp.</span></div>
+                    <div class="stat-item"><span class="stat-num">15k+</span><span class="stat-label">Clients</span></div>
+                    <div class="stat-item"><span class="stat-num">5★</span><span class="stat-label">Rating</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials" id="reviews">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-tag">Client Love</div>
+            <h2 class="section-title">Trusted by <em>Galway's Discerning</em></h2>
+            <div class="gold-line" style="margin-top:16px;"></div>
+        </div>
+        <div class="testimonials-grid">
+            <div class="tcard reveal">
+                <div class="stars">★★★★★</div>
+                <p class="t-text">"Yana is absolutely incredible! The head spa treatment is unlike anything I've ever experienced. Pure relaxation from start to finish. Galway is so lucky to have her!"</p>
+                <div class="t-author"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="" class="t-author-img"><div><div class="t-author-name">Siobhán M.</div><div class="t-author-detail">Regular Client · Galway</div></div></div>
+            </div>
+            <div class="tcard reveal reveal-d1">
+                <div class="stars">★★★★★</div>
+                <p class="t-text">"Came for my wedding prep and felt like a princess. Yana's attention to detail is unmatched. My skin was absolutely glowing on the big day. Worth every cent!"</p>
+                <div class="t-author"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="" class="t-author-img"><div><div class="t-author-name">Aoife B.</div><div class="t-author-detail">Bridal Client · June 2025</div></div></div>
+            </div>
+            <div class="tcard reveal reveal-d2">
+                <div class="stars">★★★★★</div>
+                <p class="t-text">"Followed Yana from @pro.ya.na and so glad I did! The treatments are genuinely life-changing. Professional, clean, and such a warm atmosphere. Highly recommend!"</p>
+                <div class="t-author"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="" class="t-author-img"><div><div class="t-author-name">Niamh O.</div><div class="t-author-detail">Loyal Client · 1 year</div></div></div>
+            </div>
+            <div class="tcard reveal">
+                <div class="stars">★★★★★</div>
+                <p class="t-text">"From the moment you walk in, you feel at home. The interiors are stunning and the treatments are world-class. My brows have never looked this good. A true gem in Galway!"</p>
+                <div class="t-author"><img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=100&q=80" alt="" class="t-author-img"><div><div class="t-author-name">Caoimhe R.</div><div class="t-author-detail">Brow & Lash Client</div></div></div>
+            </div>
+            <div class="tcard reveal reveal-d1">
+                <div class="stars">★★★★★</div>
+                <p class="t-text">"I've been coming to Yana for two years now. The monthly facials keep my skin glowing year-round. She genuinely cares about her clients. An award well deserved!"</p>
+                <div class="t-author"><img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=100&q=80" alt="" class="t-author-img"><div><div class="t-author-name">Eimear L.</div><div class="t-author-detail">Loyal Client · 2 years</div></div></div>
+            </div>
+            <div class="tcard reveal reveal-d2">
+                <div class="stars">★★★★★</div>
+                <p class="t-text">"Moved from Dublin and struggled to find a salon that matched my standards — until I found Love Yourself Beauty Room. The head spa is absolutely divine. Can't recommend enough!"</p>
+                <div class="t-author"><img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=100&q=80" alt="" class="t-author-img"><div><div class="t-author-name">Fiona D.</div><div class="t-author-detail">New Client · 6 months</div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="gallery-section" id="gallery">
+    <div class="container-lg">
+        <div class="section-header reveal">
+            <div class="section-tag">Our Sanctuary</div>
+            <h2 class="section-title">A Glimpse <em>Inside</em></h2>
+            <div class="gold-line" style="margin-top:16px;"></div>
+        </div>
+        <div class="gallery-grid reveal">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Facial treatment" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=600&q=80" alt="Salon interior" loading="lazy" class="g-tall">
+            <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=80" alt="Brow transformation" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80" alt="Professional treatment" loading="lazy" class="g-wide">
+            <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80" alt="Relaxation" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=600&q=80" alt="Products" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<section class="booking-section" id="booking">
+    <div class="container-sm">
+        <div class="section-header reveal">
+            <div class="section-tag">Reserve Your Moment</div>
+            <h2 class="section-title">Online <em>Booking</em></h2>
+            <div class="gold-line" style="margin-top:16px;"></div>
+        </div>
+        <div class="booking-wrapper reveal">
+            <div class="booking-grid">
+                <select>
+                    <option value="">Choose Service</option>
+                    <optgroup label="— Facials —">
+                        <option>Deep Cleanse Facial (80 min) · €80</option>
+                        <option>Hydro Boost Facial (80 min) · €80</option>
+                        <option>Anti-Aging Facial (80 min) · €80</option>
+                        <option>BioRepeel / PRX-133 Peel · €80</option>
+                        <option>Gentleman's Facial (80 min) · €80</option>
+                        <option>Circadia Luxury Facial (90 min) · €100</option>
+                        <option>Botox Effect Facial (80 min) · €100</option>
+                        <option>Casmara Customized (80 min) · €80</option>
+                        <option>Lifting Facial Massage + Mask · €80</option>
+                        <option>Dermaplaning Single (50 min) · €75</option>
+                        <option>Dermaplaning Super Glow (70 min) · €90</option>
+                        <option>Dermalux LED + PDRN Mask · €50</option>
+                        <option>Teenager Facial (60 min) · €60</option>
+                    </optgroup>
+                    <optgroup label="— Advanced Treatments —">
+                        <option>Microneedling + Exosomes Full Face · €175</option>
+                        <option>Microneedling Face, Neck & Decollete · €220</option>
+                        <option>Skin Booster PDRN – Face · €150</option>
+                        <option>Skin Booster PDRN – Neck · €150</option>
+                        <option>Skin Booster PDRN – Eyes Zone · €150</option>
+                        <option>Hair Filler / Scalp Microneedling · €150</option>
+                    </optgroup>
+                    <optgroup label="— Massages & Body —">
+                        <option>Full Body Massage (60 min) · €80</option>
+                        <option>Back, Neck & Shoulders (30 min) · €50</option>
+                        <option>Sport Deep Tissue (45 min) · €60</option>
+                        <option>Anticellulite Massage (60 min) · €80</option>
+                        <option>Pregnancy Massage (45 min) · €60</option>
+                        <option>Lymphatic Manual Full Body · €80</option>
+                        <option>Vacuum Vibro Massage (60 min) · €80</option>
+                        <option>Lymphatic Bandage Wrapping (90 min) · €90</option>
+                        <option>Combo: Vacuum + Bandage (2.5 hrs) · €155</option>
+                    </optgroup>
+                    <optgroup label="— Brows —">
+                        <option>Brows Lamination · €50</option>
+                        <option>Brows Tinting + Shaping · €25</option>
+                    </optgroup>
+                    <optgroup label="— Signature —">
+                        <option>Head Spa Therapy (60 min) · €95</option>
+                        <option>Bridal Concierge (Custom) · from €420</option>
+                    </optgroup>
+                </select>
+                <select>
+                    <option value="">Select Specialist</option>
+                    <option>Yana (Senior Therapist)</option>
+                    <option>Ciara (Senior)</option>
+                    <option>Róisín</option>
+                </select>
+                <input type="date" aria-label="Select date">
+                <input type="time" value="10:30" aria-label="Select time">
+            </div>
+            <div style="text-align:center;margin-top:28px;">
+                <p style="color:var(--text-dim);margin-bottom:16px;font-size:0.8rem;"><i class="far fa-clock" style="color:var(--gold);"></i>&nbsp; Available today: 10:30 · 12:00 · 14:15 · 16:00 · 17:30</p>
+                <button class="btn btn-gold">Confirm Appointment <i class="fas fa-check"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section" id="contact">
+    <div class="container-sm">
+        <div class="section-header reveal">
+            <div class="section-tag">Visit Us</div>
+            <h2 class="section-title">Get in <em>Touch</em></h2>
+            <div class="gold-line" style="margin-top:16px;"></div>
+        </div>
+        <div class="contact-grid reveal">
+            <div>
+                <div class="contact-item"><p class="contact-item-label"><i class="fas fa-map-marker-alt"></i> Our Location</p><p>Doughishka Road, Galway, Ireland<br>H91VK66</p></div>
+                <div class="contact-item"><p class="contact-item-label"><i class="fas fa-phone-alt"></i> Phone</p><p>+353 91 525 8800</p></div>
+                <div class="contact-item"><p class="contact-item-label"><i class="fas fa-envelope"></i> Email</p><p>hello@loveyourselfbeautyroom.ie</p></div>
+                <div class="contact-item"><p class="contact-item-label"><i class="far fa-clock"></i> Opening Hours</p><p>Mon–Sat: 9:00 – 19:00<br>Sun: 10:00 – 17:00</p></div>
+                <div class="contact-item"><p class="contact-item-label"><i class="fab fa-instagram"></i> Follow Yana</p><a href="#" class="social-handle"><i class="fab fa-instagram"></i> @pro.ya.na</a><a href="#" class="social-handle"><i class="fab fa-instagram"></i> @headspa_ireland</a></div>
+            </div>
+            <div class="contact-form">
+                <input type="text" placeholder="Your Name">
+                <input type="email" placeholder="Email Address">
+                <textarea placeholder="Your Message" rows="5"></textarea>
+                <button class="btn btn-gold" style="width:100%;">Send Message <i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">Love Yourself <em>Beauty Room</em></div>
+                <p style="color:var(--text-dim);line-height:1.7;font-size:0.83rem;font-weight:300;">Award-winning professional beautician & spa therapist. Serving Galway with passion and excellence since 2015. 🏆 Irish Beauty Award Winner 2025.</p>
+                <p style="color:var(--text-dim);margin-top:10px;font-size:0.78rem;"><i class="fab fa-instagram"></i> @pro.ya.na &nbsp;·&nbsp; <i class="fab fa-instagram"></i> @headspa_ireland</p>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <a href="#">Facials</a><a href="#">Head Spa</a><a href="#">Microneedling</a><a href="#">Massages</a><a href="#">Bridal</a>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <a href="#">About Yana</a><a href="#">Gift Cards</a><a href="#">Press</a><a href="#">Privacy Policy</a>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p style="color:var(--text-dim);font-size:0.76rem;margin-bottom:12px;font-weight:300;">Receive exclusive offers and beauty insights from Yana.</p>
+                <input type="email" placeholder="Your email address">
+                <button class="btn btn-gold" style="width:100%;padding:12px;margin-top:4px;">Subscribe</button>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 Love Yourself Beauty Room. All rights reserved. &nbsp;·&nbsp; Doughishka Road, Galway, Ireland H91VK66</p></div>
+    </div>
+</footer>
+
+<div class="chatbot-wrapper">
+    <div class="chatbot-popup" id="chatbotPopup">
+        <div class="chatbot-header"><i class="fas fa-robot"></i> Love Yourself Concierge</div>
+        <div class="chatbot-body" id="chatbotBody"><div class="chat-message bot" id="initialMessage"></div></div>
+        <div class="chatbot-quick" id="quickReplies">
+            <span class="quick-chip" data-reply="What services do you offer?">Services</span>
+            <span class="quick-chip" data-reply="What are your prices?">Pricing</span>
+            <span class="quick-chip" data-reply="What are your opening hours?">Hours</span>
+            <span class="quick-chip" data-reply="Where are you located?">Location</span>
+            <span class="quick-chip" data-reply="Cancellation policy?">Policy</span>
+            <span class="quick-chip" data-reply="I'd like to book">Book</span>
+        </div>
+        <div class="chatbot-input-row">
+            <input type="text" id="chatInput" placeholder="Type your message...">
+            <button id="chatSendBtn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chatbot-toggle-btn" id="chatbotToggle"><i class="fas fa-comment-dots"></i></button>
+</div>
+
+<script>
+    // Reveal
+    const revEls = document.querySelectorAll('.reveal');
+    new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.08,rootMargin:'0px 0px -20px 0px'}).observe || revEls.forEach(el => {
+        new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.08}).observe(el);
+    });
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.08,rootMargin:'0px 0px -20px 0px'});
+    revEls.forEach(el => obs.observe(el));
+
+    // Header
+    window.addEventListener('scroll', () => { document.getElementById('header').classList.toggle('scrolled', scrollY > 50); });
+
+    // Lightbox
+    const imgs = ['656160943_17997855629866360_4613145091297097122_n.jpg','658054231_17997855620866360_5766234982690974536_n.jpg','656582610_17997855638866360_6059046420955525881_n.jpg','659057609_17997855617866360_5759736181100285731_n.jpg'];
+    let curImg = 0;
+    function openLightbox(i) { curImg=i; document.getElementById('lightbox-img').src=imgs[i]; document.getElementById('lightbox').classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow=''; }
+    function changeImage(d) { curImg=(curImg+d+imgs.length)%imgs.length; document.getElementById('lightbox-img').src=imgs[curImg]; }
+    document.getElementById('lightbox').addEventListener('click', e => { if(e.target===e.currentTarget) closeLightbox(); });
+    document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowLeft') changeImage(-1); if(e.key==='ArrowRight') changeImage(1); });
+
+    // Chatbot
+    document.addEventListener('DOMContentLoaded', () => {
+        const popup=document.getElementById('chatbotPopup'), toggle=document.getElementById('chatbotToggle'),
+              body=document.getElementById('chatbotBody'), initMsg=document.getElementById('initialMessage'),
+              input=document.getElementById('chatInput'), sendBtn=document.getElementById('chatSendBtn'),
+              qr=document.getElementById('quickReplies');
+        toggle.addEventListener('click', () => { popup.classList.toggle('open'); if(popup.classList.contains('open')&&!initMsg.textContent) typeMsg("Hi 👋 Fáilte! Welcome to Love Yourself Beauty Room. I'm Yana's virtual concierge. How can I help you today?",initMsg); });
+        setTimeout(()=>{ if(!popup.classList.contains('open')){ popup.classList.add('open'); if(!initMsg.textContent) typeMsg("Hi 👋 Fáilte! Welcome to Love Yourself Beauty Room. I'm Yana's virtual concierge. How can I help you today?",initMsg); }},3000);
+        function typeMsg(text,el){el.textContent='';const w=text.split(' ');let i=0;(function a(){if(i<w.length){el.textContent+=(i===0?'':' ')+w[i++];setTimeout(a,75+Math.random()*55);}})();}
+        function addBot(text){const ind=document.createElement('div');ind.className='typing-indicator';ind.innerHTML='<span></span><span></span><span></span>';body.appendChild(ind);body.scrollTop=body.scrollHeight;const msg=document.createElement('div');msg.className='chat-message bot';body.appendChild(msg);setTimeout(()=>{ind.remove();const w=text.split(' ');let i=0;(function a(){if(i<w.length){msg.textContent+=(i===0?'':' ')+w[i++];body.scrollTop=body.scrollHeight;setTimeout(a,55+Math.random()*45);}})();},800+Math.random()*500);}
+        function addUser(text){const msg=document.createElement('div');msg.className='chat-message user';msg.textContent=text;body.appendChild(msg);body.scrollTop=body.scrollHeight;}
+        function reply(m){m=m.toLowerCase();if(m.includes('facial')||m.includes('face'))return'Our facials start from €80 for 80-minute treatments: Deep Cleanse, Hydro Boost, Anti-Aging, BioRepeel, Gentleman\'s Facial. Premium: Circadia Luxury (€100), Botox Effect (€100). Dermaplaning from €75, Dermalux LED + PDRN only €50!';if(m.includes('massage')||m.includes('body'))return'Body treatments from €50! Full Body €80, Deep Tissue €60, Anticellulite €80, Lymphatic Full Body €80, Bandage Wrapping €90. Amazing Combo — Vacuum + Bandage (2.5hrs) €155!';if(m.includes('microneedl')||m.includes('exosome')||m.includes('advanced'))return'Microneedling + Premium Exosomes + Dermalux LED: Full Face €175, Face/Neck/Decollete €220. Skin Booster PDRN (face, neck or eyes) €150 per area. Course of 4 sessions recommended!';if(m.includes('brow'))return'Brows Lamination €50 · Brows Tinting + Shaping €25. Quick transformations with beautiful results!';if(m.includes('price')||m.includes('cost')||m.includes('how much'))return'Prices from €25 (Brow Tinting) to €220 (Microneedling Face+Neck+Decollete). Facials from €80, Massages from €50, Advanced treatments from €150. Check the "Our Price Lists" section for full menus!';if(m.includes('service')||m.includes('offer')||m.includes('treatment'))return'We offer Facials, Dermaplaning, Microneedling + Exosomes, Skin Boosters PDRN, Head Spa, Massages, Brow Services, Hair Filler, Dermalux LED, and Bridal packages!';if(m.includes('hour')||m.includes('open')||m.includes('time'))return'Open Monday–Saturday 9:00–19:00 and Sunday 10:00–17:00. Doughishka Road, Galway H91VK66.';if(m.includes('location')||m.includes('where')||m.includes('address'))return'Doughishka Road, Galway, Ireland — H91VK66. Free parking available on site!';if(m.includes('cancel')||m.includes('policy'))return'24 hours notice required for cancellations. Late cancellations incur a 50% charge. Call us: +353 91 525 8800.';if(m.includes('book')||m.includes('appoint')||m.includes('reserve'))return"Book online above, call +353 91 525 8800, or DM Yana on Instagram @pro.ya.na. We'd love to welcome you!";if(m.includes('head spa')||m.includes('scalp'))return'Head Spa Therapy (€95, 60 min) — our Japanese-inspired scalp treatment, most-requested service. Pure bliss!';return"Thank you! For more info, call +353 91 525 8800 or DM @pro.ya.na on Instagram. We'd love to see you soon!";}
+        function send(text){if(!text.trim())return;addUser(text.trim());input.value='';setTimeout(()=>addBot(reply(text)),300);}
+        qr.addEventListener('click',e=>{if(e.target.classList.contains('quick-chip'))send(e.target.dataset.reply);});
+        sendBtn.addEventListener('click',()=>send(input.value));
+        input.addEventListener('keypress',e=>{if(e.key==='Enter')send(input.value);});
+    });
+</script>
+</body>
+</html>
